@@ -12,15 +12,21 @@ class HelloController{
     ];
 
     
-    #[Route('/', name:'app_index')]
-    public function index(): Response
+    #[Route('/{limit<\d+>?3}', name:'app_index')]
+    public function index(int $limit): Response
     {
-        return new Response(implode(',', $this->messages));
+        return new Response(implode(',', array_slice($this->messages, 0, $limit)));
     }
 
-    #[Route('/messages/{id}',  name:'app_showOne')]
+    #[Route('/messages/{id<\d+>}',  name:'app_showOne')]
 
-    public function showOne($id): Response{
+    public function showOne(int $id): Response{
+        return new Response($this->messages[$id]);
+    }
+
+    #[Route('/messages/2',  name:'app_showTwo', priority: 2)]
+
+    public function showTwo(int $id): Response{
         return new Response($this->messages[$id]);
     }
 }
