@@ -9,9 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HelloController extends AbstractController
 {
 
-    private array $messages = [
-        'Hello', 'Hi', 'Bye!'
-    ];
+    
+  private array $messages = [
+    ['message' => 'Hello', 'created' => '2023/01/12'],
+    ['message' => 'Hi', 'created' => '2023/02/12'],
+    ['message' => 'Bye!', 'created' => '2021/05/12']
+  ];
 
     
     #[Route('/{limit<\d+>?3}', name:'app_index')]
