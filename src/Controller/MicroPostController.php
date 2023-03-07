@@ -29,4 +29,23 @@ class MicroPostController extends AbstractController
             'post' => $post,
         ]);
     }
+
+
+    #[Route('/micro-post/add', name: 'app_micro_post_add')]
+    public function add(): Response
+    {
+
+        $microPost = new MicroPost();
+        $form = $this->createFormBuilder($microPost)
+            ->add('title')
+            ->add('text')
+            ->getForm();
+
+        return $this->renderForm(
+            'task/new.html.twig',
+            [
+                'form' => $form
+            ]
+        );
+    }
 }
