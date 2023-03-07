@@ -41,7 +41,7 @@ class MicroPostController extends AbstractController
         $form = $this->createFormBuilder($microPost)
             ->add('title')
             ->add('text')
-            ->add('submit', SubmitType::class, ['label' => 'Save'])
+            # ->add('submit', SubmitType::class, ['label' => 'Save'])
             ->getForm();
 
 
@@ -51,11 +51,11 @@ class MicroPostController extends AbstractController
             $post->setCreated(new DateTime());
             $posts->save($post, true);
 
-            //TODO:Add a Flash Message
+            //Note:Add a Flash Message
             $this->addFlash('success', 'Your micro post has been added.');
 
 
-            //TODO: Add Redirect
+            //Note: Add Redirect
             return $this->redirectToRoute('app_micro_post');
         }
 
