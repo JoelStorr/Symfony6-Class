@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\User;
+use App\Entity\Comment;
+use App\Entity\MicroPost;
 use App\Entity\UserProfile;
+use App\Repository\CommentRepository;
+use App\Repository\MicroPostRepository;
 use App\Repository\UserProfileRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,10 +26,13 @@ class HelloController extends AbstractController
 
 
     #[Route('/', name: 'app_index')]
-    public function index(UserProfileRepository $profiles): Response
-    {
+    public function index(
+        UserProfileRepository $profiles,
+        MicroPostRepository $posts,
+        CommentRepository $comments
+    ): Response {
 
-
+        /* 
         $user = new User();
         $user->setEmail('email@email.com');
         $user->setPassword('1234567890');
@@ -32,12 +40,37 @@ class HelloController extends AbstractController
 
         $profile = new UserProfile();
         $profile->setUser($user);
-        $profiles->save($profile, true);
+        $profiles->save($profile, true); */
 
 
 
-        /*    $profile = $profiles->find(2);
-        $profiles->remove($profile, true); */
+        /*    
+            $profile = $profiles->find(2);
+            $profiles->remove($profile, true); 
+        */
+
+        /*        $post = new MicroPost();
+        $post->setTitle('Hello Demo');
+        $post->setText('Hello Demo');
+        $post->setCreated(new DateTime()); */
+
+
+
+        $post = $posts->find(1);
+        $comment = $post->getComments()[0];
+
+        $post->removeComment($comment);
+        $posts->save($post, true);
+
+        //dd($post);
+
+        /*  $comment = new Comment();
+        $comment->setText('Hello');
+        $comment->setPost($post);
+        //$post->addComment($comment);
+        //$posts->save($post, true);
+        $comments->save($comment, true); */
+
 
         return $this->render(
             'hello/index.html.twig',
