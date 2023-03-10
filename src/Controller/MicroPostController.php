@@ -50,7 +50,6 @@ class MicroPostController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
-            $post->setCreated(new DateTime());
             $post->setAuthor($this->getUser());
             $posts->save($post, true);
 
@@ -102,7 +101,7 @@ class MicroPostController extends AbstractController
     }
 
     #[Route('/micro-post/{post}/comment', name: 'app_micro_post_comment')]
-    #[IsGranted('ROLE_COMMENTOR')]
+    #[IsGranted('ROLE_COMMENTER')]
     public function addComment(MicroPost $post, Request $request, CommentRepository $comments): Response
     {
 

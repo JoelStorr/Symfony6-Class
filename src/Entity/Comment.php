@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentRepository;
+use DateTime;
+use DateTimeInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommentRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
@@ -27,6 +30,16 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?DateTimeInterface $created = null;
+
+
+
+    public function __construct()
+    {
+        $this->created = new DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -43,6 +56,7 @@ class Comment
 
         return $this;
     }
+
 
     public function getPost(): ?MicroPost
     {
@@ -64,6 +78,18 @@ class Comment
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
 
         return $this;
     }
