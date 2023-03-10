@@ -52,18 +52,21 @@ class AppFixtures extends Fixture
         $microPost1->setTitle('Welcome to Germany!');
         $microPost1->setText('Welcome to Germany!');
         $microPost1->setCreated(new DateTime());
+        $microPost1->setAuthor($user1);
         $manager->persist($microPost1); // Stages Data to be Added to Table
 
         $microPost2 = new MicroPost();
         $microPost2->setTitle('Welcome to US!');
         $microPost2->setText('Welcome to US!');
         $microPost2->setCreated(new DateTime());
+        $microPost2->setAuthor($user2);
         $manager->persist($microPost2); // Stages Data to be Added to Table
 
         $microPost3 = new MicroPost();
         $microPost3->setTitle('Welcome to Poland!');
         $microPost3->setText('Welcome to Poland!');
         $microPost3->setCreated(new DateTime());
+        $microPost3->setAuthor($user1);
         $manager->persist($microPost3); // Stages Data to be Added to Table
 
 
