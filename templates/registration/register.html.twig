@@ -17,6 +17,12 @@
 
 
     {{ form_start(registrationForm) }}
+        <div class="text-xl mb-4">
+            Basic Information
+        </div>
+        <div class="text-gray-500 mb-4 pb-4 border-b border-gray-300">
+            Enter your credentials
+        </div>
         <div>
          {{ 
             form_label(
@@ -119,6 +125,18 @@
                 )
             }}
         </div>
+
+        <div class="border-b border-gray-300 mt-10"></div>
+
+
+        <div class="text-xl mb-4 mt-5">
+            Your Profile
+        </div>
+        <div class="text-gray-500 mb-4 pb-4 border-b border-gray-300">
+            Enter more (optional) details about yourself. You can do it later
+        </div>
+
+        {{ include('/settings_profile/_profile_form.html.twig', {form: registrationForm.userProfile})}}
 
     <div>
         <button 
