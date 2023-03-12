@@ -15,7 +15,7 @@ class ProfileController extends AbstractController
     #[Route('/profile/{id}', name: 'app_profile')]
     public function show(User $user): Response
     {
-        return $this->render('profile/profile.html.twig', [
+        return $this->render('profile/show.html.twig', [
            'user' => $user
         ]);
     }
