@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="flex">
+<div class="flex items-center">
     <div>
         <div class="text-2xl">{{ user.userProfile.name ?? user.email }}</div>
         <div class="text-lg text-gray-500 dark:text-gray-400 font-normal">{{ user.email }}</div>
@@ -37,9 +37,14 @@
 </div>
 
 
+{% embed 'shared/_tabs.html.twig' %}
+    {% block tabs %}
+        Some Content
+    {% endblock %}
+
+{% endembed %}
 
 
 
-<div class="mb-8"></div>
 {{ include ('micro_post/_post_list.html.twig', { posts: user.posts }) }}
 {% endblock %}
