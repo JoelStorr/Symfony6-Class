@@ -88,16 +88,11 @@ class SettingsProfileController extends AbstractController
                 $safeFileName = $slugger->slug($originalFileName);
                 $newFileName = $safeFileName . '-' . uniqid() . '.' .$profileImageFile->guessExtension();
 
-                dd(
-                    $originalFileName,
-                    $safeFileName,
-                    $newFileName
-                );
 
                 try{
                     $profileImageFile->move(
                         /* Comes form Services.yaml */
-                        $this->getParameter('profiles_directorey'),
+                        $this->getParameter('profiles_directory'),
                         $newFileName
                     );
                 } catch(FileException $e){
