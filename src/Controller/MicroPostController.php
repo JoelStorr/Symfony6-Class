@@ -22,7 +22,6 @@ class MicroPostController extends AbstractController
 {
 
     # NOTE: Micro Post Index
-
     #[Route('/micro-post', name: 'app_micro_post')]
     public function index(MicroPostRepository $posts): Response
     {
@@ -33,6 +32,33 @@ class MicroPostController extends AbstractController
             'posts' => $posts->findAllWithComments(),
         ]);
     }
+
+
+    # NOTE: Top Liked
+    #[Route('/micro-post/top-liked', name: 'app_micro_post_topliked')]
+    public function topLiked(MicroPostRepository $posts): Response
+    {
+
+        
+
+        return $this->render('micro_post/top_liked.html.twig', [
+            'posts' => $posts->findAllWithComments(),
+        ]);
+    }
+
+    # NOTE: Post by Followed Users
+    #[Route('/micro-post/follows', name: 'app_micro_post_follows')]
+    public function follows(MicroPostRepository $posts): Response
+    {
+
+        
+
+        return $this->render('micro_post/follows.html.twig', [
+            'posts' => $posts->findAllWithComments(),
+        ]);
+    }
+
+
 
     #[Route('/micro-post/{post}', name: 'app_micro_post_show')]
     #[IsGranted(MicroPost::VIEW, 'post')]
