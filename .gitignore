@@ -12,3 +12,5 @@
 .env
 /.env
 docker-compose.yml
+
+/public/uploads/
