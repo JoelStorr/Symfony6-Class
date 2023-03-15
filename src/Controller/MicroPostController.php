@@ -22,7 +22,7 @@ class MicroPostController extends AbstractController
 {
 
     # NOTE: Micro Post Index
-    #[Route('/micro-post', name: 'app_micro_post')]
+    #[Route('/', name: 'app_micro_post')]
     public function index(MicroPostRepository $posts): Response
     {
 
