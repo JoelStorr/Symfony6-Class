@@ -14,5 +14,20 @@ Implemented are:
     - Templating with Twig
     - Stylping with Tailwind CSS
 
-![Home Screen of the App](public/README-Images/Home.png)
+**Home Screen:**
+![Home Screen of the App Light](public/README-Images/Home.png)
 
+**Home Screen Dark Mode:**
+![Home Screen Dark](public/README-Images/Home%20Dark.png)
+
+**Post Detail Screen:**
+![Post Detail Screen](public/README-Images/Post%20Detail%20Screen.png)
+
+**LogIn Form:**
+![Login Screen](public/README-Images/LogIn.png)
+
+**Profile Settings:**
+![Profile Settings](public/README-Images/Profile%20Settings.png)
+
+**Profile Image Uplaod:**
+![File Upload](public/README-Images/File%20Upload.png)
